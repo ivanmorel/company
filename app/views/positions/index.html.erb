@@ -1,0 +1,26 @@
+<h3>Positions</h3>
+<hr>
+<p>
+  <%= button_to 'New', new_position_path, method: :get %>
+</p>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Status</th>
+  </tr>
+
+  <% @positions.each do |a| %>
+      <tr>
+        <td><%= a.id%></td>
+        <td><%= a.name%></td>
+        <td><%= a.description%></td>
+        <td><%= a.status.name%></td>
+        <td style="border: 0px;"><%= button_to 'Edit', edit_position_path(a), method: :get %></td>
+        <td style="border: 0px;"><%= button_to 'Destroy', position_path(a), method: :delete %></td>
+      </tr>
+  <% end %>
+
+</table>
+

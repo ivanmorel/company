@@ -1,0 +1,42 @@
+<style>
+
+body,h5,h6{font-family: "Lato", sans-serif; font-size: 15px;}
+#body_div{
+    padding: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 75px;
+}
+h3 {color: dodgerblue}
+
+th{
+    border: 1px solid #ddd;
+    background-color: darkslategray;
+    color: white;
+    padding: 7px;
+    text-align: center;
+}
+td{
+    border: 1px solid #ddd;
+    padding: 7px;
+    text-align: center;
+}
+tr:hover {background-color: #f5f5f5}
+.navbar{
+    background-color: dodgerblue;
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.navbar-header > a{
+    color: #ffffff;
+}
+
+#myNavbar > ul > li > a{
+    color:#ffffff;
+}
+#myNavbar > ul > li > a:hover{
+    color:mediumslateblue;
+}
+#myNavbar > ul > li:hover{
+    background-color: #ffffff;
+}
+
+</style>

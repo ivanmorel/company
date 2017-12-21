@@ -1,0 +1,36 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<h3>Statuses</h3>
+<hr>
+<p>
+<form class="button_to" method="get" action="/statuses/new/"><input type="submit" value="New" /></form>
+</p>
+<table ng-app="app" ng-controller="controller">
+  <tr>
+    <th ng-click="orderByThis('id')">ID</th>
+    <th ng-click="orderByThis('name')">Name</th>
+    <th ng-click="orderByThis('description')">Description</th>
+  </tr>
+
+    <tr ng-repeat="x in data | orderBy: order">
+        <td>{{x.id}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.description}}</td>
+        <td style="border: 0px;"><form class="button_to" method="get" action="{{'/statuses/'+x.id+'/edit'}}"><input type="submit" value="Edit" /></form></td>
+        <td style="border: 0px;"><form class="button_to" method="post" action="{{'/statuses/'+x.id}}"><input type="hidden" name="_method" value="delete" /><input type="submit" value="Destroy" /><input type="hidden" name="authenticity_token" value="VT/504uEYqZTLSx4FkUHX7nP9Mli4sq1m9kOQIPszg5gd6J2tMi+vb30RIEmqh+xjDi9HGfseVCYOdiJm9K3xw==" /></form></td>
+    </tr>
+
+</table>
+
+<script>
+    angular.module('app',[]).controller('controller', function($scope, $http){
+        $http.get("http://127.0.0.1:3000/statuses/json").then(function(response){
+            $scope.data = response.data;
+        });
+        $scope.orderByThis = function(type){
+            if ($scope.order == type) {
+                $scope.order = "-"+type;
+            }
+            else $scope.order = type;
+        }
+    });
+</script>

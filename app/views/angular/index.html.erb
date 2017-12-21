@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+</head>
+<style>
+</style>
+<body>
+<div ng-app="app" ng-controller="controller" >
+  <input type="text" ng-model="exp" style="text-align: right">
+  <button ng-click="addText('0')">0</button>
+  <button ng-click="addText('1')">1</button>
+  <button ng-click="addText('2')">2</button>
+  <button ng-click="addText('3')">3</button>
+  <button ng-click="addText('4')">4</button>
+  <button ng-click="addText('5')">5</button>
+  <button ng-click="addText('6')">6</button>
+  <button ng-click="addText('7')">7</button>
+  <button ng-click="addText('8')">8</button>
+  <button ng-click="addText('9')">9</button>
+  <button ng-click="addText('+')">+</button>
+  <button ng-click="addText('-')">-</button>
+  <button ng-click="addText('*')">*</button>
+  <button ng-click="addText('/')">/</button>
+  <button ng-click="addText('(')">(</button>
+  <button ng-click="addText(')')">)</button>
+  <button ng-click="execute()">Execute</button>
+  <button ng-click="clear()">Clear</button>
+</div>
+
+<script>
+    var app = angular.module('app',[]);
+    app.controller('controller', function($scope){
+        $scope.exp = '';
+        $scope.addText = function (a) {
+            $scope.exp += a;
+        }
+        $scope.execute = function() {
+            $scope.exp = $scope.$eval($scope.exp);
+        }
+        $scope.clear = function() {
+            $scope.exp = "";
+        }
+    });
+</script>
+</body>
+</html>
+

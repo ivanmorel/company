@@ -1,0 +1,26 @@
+<h3>Address Types</h3>
+<hr>
+<p>
+  <%= button_to 'New', new_address_type_path, method: :get %>
+</p>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Status</th>
+  </tr>
+
+  <% @addresstypes.each do |a| %>
+      <tr>
+        <td><%= a.id%></td>
+        <td><%= a.name%></td>
+        <td><%= a.description%></td>
+        <td><%= a.status.name%></td>
+        <td style="border: 0px;"><%= button_to 'Edit', edit_address_type_path(a), method: :get, :class => 'w3-btn w3-blue' %></td>
+        <td style="border: 0px;"><%= button_to'Destroy', address_type_path(a), method: :delete %></td>
+      </tr>
+  <% end %>
+
+</table>
+

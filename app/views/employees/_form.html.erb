@@ -1,0 +1,91 @@
+<hr>
+<%= form_for @employee do |f| %>
+
+    <% if @employee.errors.any? %>
+        <% @employee.errors.full_messages.each do |e| %>
+            <p>
+            <li> <%= e %></li>
+            </p>
+        <% end %>
+    <% end %>
+
+    <p>
+      <%= f.label "First Name:" %><br>
+      <%= f.text_field :first_name %>
+    </p>
+    <p>
+      <%= f.label "Last Name:" %><br>
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label "Department: " %><br>
+      <%= f.select :department_id, Department.all.collect{|s| [s.name, s.id] } %>
+    </p>
+    <p>
+      <%= f.label "Position: " %><br>
+      <%= f.select :position_id, Position.all.collect{|s| [s.name, s.id]} %>
+    </p>
+    <p>
+      <%= f.label "Status:" %><br>
+      <%= f.select :status_id, Status.all.collect{|s| [s.name, s.id]} %>
+    </p>
+
+    <h3>Addresses</h3>
+    <%= f.fields_for :addresses do |a| %>
+        <p>
+          <%= a.label 'Address Type:' %><br>
+          <%= a.select :address_type_id, AddressType.all.collect{|a| [a.name, a.id]} %>
+        </p>
+        <p>
+          <%= a.label 'Address 1:' %><br>
+          <%= a.text_area :address1 %>
+        </p>
+
+        <p>
+          <%= a.label 'Address 2:' %><br>
+          <%= a.text_area :address2 %>
+        </p>
+
+        <p>
+          <%= a.label 'City:' %><br>
+          <%= a.text_field :city %>
+        </p>
+
+        <p>
+          <%= a.label 'State:' %><br>
+          <%= a.text_field :state %>
+        </p>
+        <p>
+          <%= a.label 'Zip Code:' %><br>
+          <%= a.text_field :zip_code %>
+        </p>
+        <p>
+          <%= a.label 'Status:' %><br>
+          <%= a.select :status_id, Status.all.collect{|s| [s.name, s.id]} %>
+        </p>
+    <% end %>
+
+    <h3>Phones</h3>
+    <%= f.fields_for :phones do |g| %>
+        <p>
+          <%= g.label 'Phone Type:' %><br>
+          <%= g.select :phone_type_id, PhoneType.all.collect{|s| [s.name, s.id]} %>
+        </p>
+
+        <p>
+          <%= g.label 'Phone:' %><br>
+          <%= g.text_field :phone %>
+        </p>
+
+        <p>
+          <%= g.label 'Status: ' %><br>
+          <%= g.select :status_id, Status.all.collect{|s| [s.name, s.id]} %>
+        </p>
+
+    <% end %>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>

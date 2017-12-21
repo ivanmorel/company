@@ -1,0 +1,63 @@
+<h3>Informacion General</h3>
+<hr>
+<%= form_for @employee do |f| %>
+    <p>
+      <strong>ID: </strong>
+      <%= @employee.id %>
+    </p>
+    <p>
+      <strong>First Name: </strong>
+      <%= @employee.first_name %>
+    </p>
+    <p>
+      <strong>Last Name: </strong>
+      <%= @employee.last_name %>
+    </p>
+    <p>
+      <strong>Department: </strong>
+      <%= Department.find(@employee.department_id).name %>
+    </p>
+
+    <p>
+      <strong>Position: </strong>
+      <%= Position.find(@employee.position_id).name %>
+    </p>
+
+    <% @employee.addresses.each do |a| %>
+        <p>
+          <strong>Address Type: </strong>
+          <%= AddressType.find(a.address_type_id).name %>
+        </p>
+        <p>
+          <strong>Address 1: </strong>
+          <%= a.address1 %>
+        </p>
+        <p>
+          <strong>Address 2: </strong>
+          <%= a.address2 %>
+        </p>
+        <p>
+          <strong>City: </strong>
+          <%= a.city %>
+        </p>
+        <p>
+          <strong>State: </strong>
+          <%= a.state %>
+        </p>
+        <p>
+          <strong>Zip Code: </strong>
+          <%= a.zip_code %>
+        </p>
+    <% end %>
+
+    <% @employee.phones.each do |p| %>
+        <p>
+          <strong>Phone Type: </strong>
+          <%= PhoneType.find(p.phone_type_id).name %>
+        </p>
+        <p>
+          <strong>Phone: </strong>
+          <%= p.phone %>
+        </p>
+    <% end %>
+<% end %>

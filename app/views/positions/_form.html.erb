@@ -1,0 +1,28 @@
+<hr>
+<%= form_for @position do |f| %>
+    <% if @position.errors.any? %>
+        <% @position.errors.full_messages.each do |e| %>
+            <p>
+            <li> <%= e %></li>
+            </p>
+        <% end %>
+    <% end %>
+
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </p>
+
+    <p>
+      <%= f.label :status_id %><br>
+      <%= f.select :status_id, Status.all.collect{|s| [s.name, s.id]} %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>

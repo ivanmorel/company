@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Company</title>
+    <%= csrf_meta_tags %>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="/style.css">
+
+
+  </head>
+
+  <body>
+  <nav class="navbar navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" style="font-size: 25px; color: #ffffff">Company</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="http://127.0.0.1:3000/employees/search">Search</a></li>
+          <li><a href="http://127.0.0.1:3000/employees" target="_self">Employees</a></li>
+          <li><a href="http://127.0.0.1:3000/departments">Departments</a></li>
+          <li><a href="http://127.0.0.1:3000/positions">Positions</a></li>
+          <li><a href="http://127.0.0.1:3000/address_types">Address Types</a></li>
+          <li><a href="http://127.0.0.1:3000/phone_types">Phone Types</a></li>
+          <li><a href="http://127.0.0.1:3000/statuses" target="_self">Statuses</a></li>
+        </ul>
+      </div>
+
+  </nav>
+  <div id="body_div" class="container">
+    <%= yield %>
+  </div>
+
+  <script>
+      $('input[type=submit]').addClass('w3-btn w3-blue');
+  </script>
+  </body>
+</html>

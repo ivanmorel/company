@@ -1,0 +1,24 @@
+<hr>
+<%= form_for @status do |f| %>
+    <% if @status.errors.any? %>
+        <% @status.errors.full_messages.each do |e| %>
+            <p>
+            <li> <%= e %></li>
+            </p>
+        <% end %>
+    <% end %>
+
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>

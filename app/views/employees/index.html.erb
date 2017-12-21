@@ -1,0 +1,37 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<h3>Employees</h3>
+<hr>
+<p>
+<form class="button_to" method="get" action="/employees/new/"><input type="submit" value="New" /></form>
+</p>
+<table ng-app="app" ng-controller="controller">
+  <tr>
+    <th ng-click="orderByThis('id')">ID Employee</th>
+    <th ng-click="orderByThis('first_name')">First Name</th>
+    <th ng-click="orderByThis('last_name')">Last Name</th>
+    <th ng-click="orderByThis('department_id')">Department ID</th>
+  </tr>
+      <tr ng-repeat="x in data | orderBy: order">
+        <td>{{x.id}}</td>
+        <td>{{x.first_name}}</td>
+        <td>{{x.last_name}}</td>
+        <td>{{x.department}}</td>
+        <td style="border: 0px;"><form class="button_to" method="get" action="{{'/employees/'+x.id}}"><input type="submit" value="Show" /></form></td>
+        <td style="border: 0px;"><form class="button_to" method="get" action="{{'/employees/'+x.id+'/edit'}}"><input type="submit" value="Edit" /></form></td>
+        <td style="border: 0px;"><form class="button_to" method="post" action="{{'/employees/'+x.id}}"><input type="hidden" name="_method" value="delete" /><input type="submit" value="Destroy" /><input type="hidden" name="authenticity_token" value="VT/504uEYqZTLSx4FkUHX7nP9Mli4sq1m9kOQIPszg5gd6J2tMi+vb30RIEmqh+xjDi9HGfseVCYOdiJm9K3xw==" /></form></td>
+      </tr>
+</table>
+
+  <script>
+      angular.module('app',[]).controller('controller', function($scope, $http){
+          $http.get("http://127.0.0.1:3000/employees/json").then(function(response){
+             $scope.data = response.data;
+          });
+          $scope.orderByThis = function(type){
+              if ($scope.order == type) {
+                  $scope.order = "-"+type;
+              }
+              else $scope.order = type;
+          }
+      });
+  </script>
